@@ -1,0 +1,22 @@
+<div class="bg-white shadow-sm border border-gray-200 p-3 rounded-lg">
+  <div class="mb-3">
+    <p class="text-xs font-medium text-gray-400 mb-1 uppercase">Nombre:</p>
+    <h2 class="text-xl font-semibold text-gray-800">
+      {{ item().name }}
+    </h2>
+  </div>
+
+  <div class="mb-4">
+    <p class="text-xs font-medium text-gray-400 mb-1 uppercase">
+      Precio:
+      <span class="text-lg font-bold text-green-600"> {{ item().price | currency }} </span>
+    </p>
+  </div>
+
+  <button
+    (click)="addToCart(item())"
+    class="w-full bg-blue-600 text-white py-2 rounded-xl font-medium hover:bg-blue-700 cursor-pointer"
+  >
+    Agregar al carrito
+  </button>
+</div>

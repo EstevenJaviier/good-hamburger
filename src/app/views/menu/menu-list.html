@@ -1,0 +1,29 @@
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <div class="lg:col-span-2">
+    <div class="w-full max-w-3xl mx-auto">
+      <app-filter (changeFilter)="filter($event)"></app-filter>
+
+      @if (hasError()) {
+      <div class="text-center py-10 text-gray-500 text-lg">
+        Ha ocurrido un error al cargar el menú.
+      </div>
+      } @if (loading()) {
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        @for (i of [1,2,3,4]; track i) {
+        <app-skeleton-card></app-skeleton-card>
+        }
+      </div>
+      } @else {
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        @for (item of filtered(); track item.id) {
+        <app-card [item]="item"></app-card>
+        }
+      </div>
+      }
+    </div>
+  </div>
+
+  <div>
+    <app-cart></app-cart>
+  </div>
+</div>
